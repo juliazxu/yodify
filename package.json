@@ -32,12 +32,17 @@
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-dev-server": "^1.14.1",
-    "webpack-hot-middleware": "^2.11.0"
+    "webpack-hot-middleware": "^2.11.0",
+    "yoda-speak": "^0.1.1"
   },
   "devDependencies": {
     "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-stage-0": "^6.5.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
     "file-loader": "^1.1.11",
+    "https": "^1.0.0",
     "react-transform-hmr": "^1.0.4",
     "url-loader": "^1.0.1"
   }

@@ -1,15 +1,23 @@
-import {combineReducers} from 'redux';
-import UserReducer from './reducer-users';
-import ActiveUserReducer from './reducer-active-user';
+import { SUBMIT_MESSAGE, CONVERT_MESSAGE } from "../constants/action-types";
 
 /*
- * We combine all reducers into a single object before updated data is dispatched (sent) to store
- * Your entire applications state (store) is just whatever gets returned from all your reducers
+ * All reducers get two parameters passed in, state and action that occurred
+ *       > state isn't entire apps state, only the part of state that this reducer is responsible for
  * */
 
-const allReducers = combineReducers({
-    users: UserReducer,
-    activeUser: ActiveUserReducer
-});
+const initialState = {
+  message: '',
+  loading: false,
+  yodifiedMessage: ''
+}
 
-export default allReducers
+export const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SUBMIT_MESSAGE:
+      return { ...state, message: action.payload, loading: true };
+    case CONVERT_MESSAGE:
+      return { ...state, yodifiedMessage: action.payload, loading: false };
+    default:
+      return state;
+  }
+}
