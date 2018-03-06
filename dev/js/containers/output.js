@@ -6,25 +6,28 @@ import {connect} from 'react-redux';
  * We need "if(!this.props.user)" because we set state to null by default
  * */
 
-class Output extends Component {
-    render() {
-        if (!this.props.yodifiedMessage) {
-            return (<div></div>);
-        }
-        return (
-            <div>
-                <h2>This is what Yoda says.</h2>
-            </div>
-        );
+class YodifiedMessage extends Component {
+  render() {
+    console.log('this props is', this.props)
+    if (!this.props.yodifiedMessage) {
+      return (<div></div>);
+    } else {
+      return (
+        <div>
+          <h2>{this.props.yodifiedMessage}</h2>
+        </div>
+      );
     }
+  }
 }
 
 // Get apps state and pass it as props to UserList
 //      > whenever state changes, the UserList will automatically re-render
 function mapStateToProps(state) {
-    return {
-        yodifiedMessage: state.yodifiedMessage
-    };
+  console.log('state is', state);
+  return {
+    yodifiedMessage: (state && state.convertMessage && state.convertMessage.yodifiedMessage)
+  };
 }
 
-export default connect(mapStateToProps)(Output);
+export default connect(mapStateToProps)(YodifiedMessage);

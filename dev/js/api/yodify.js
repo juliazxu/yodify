@@ -23,7 +23,7 @@ function YodaSpeak(key) {
 export function convert (message) {
   YodaSpeak.convert = (message) => {
     const path = "/yoda?" + querystring.stringify({sentence: message});
-    instance.get(path)
+    return instance.get(path)
     .then(function (response) {
       console.log(response);
       return response;

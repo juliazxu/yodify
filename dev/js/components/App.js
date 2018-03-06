@@ -1,6 +1,6 @@
 import React from 'react';
 import Input from '../containers/input';
-import Output from '../containers/output';
+import YodifiedMessage from '../containers/output';
 require('../../scss/style.scss');
 
 const App = () => (
@@ -9,8 +9,8 @@ const App = () => (
       <img id="yoda" src={require('./../assets/yoda.svg')} />
     </div>
     <h1>Yodify your sentence</h1>
+    <YodifiedMessage />
     <Input />
-    <Output />
   </div>
 );
 
