@@ -1,35 +1,37 @@
 import { apiKey } from './apiKey';
-// var express = require('express');
-// var app = express();
-// var cors = require('cors');
+var https = require('https');
+var querystring = require('querystring');
+var axios = require('axios');
 
-// app.use(cors());
+var instance = axios.create({
+  baseURL: 'https://yoda.p.mashape.com/',
+  timeout: 5000,
+  headers: { "X-Mashape-Key": apiKey || null }
+});
 
-const YodaSpeak = require('yoda-speak');
-const yoda = new YodaSpeak('WJU3xX4elhmsh4t4yoIQuE4lsRB9p16ZKQEjsnlqZ4NlBsFwro');
-
-export function convert (message) {
-  new Promise(resolve => {
-    yoda.convert(message, (err, result) => {
-      if (!err) {
-        if (result.toString().includes('error')) {
-          resolve('Sleeping, Yoda is. In an hour, you can try. Herh herh.');
-        } else {
-          console.log(result.toString());
-          resolve(result.toString());
-        }
-      } else {
-        console.log('There was an error', err);
-        resolve('Sleeping, Yoda is. In an hour, you can try. Herh herh.');
-      }
-    });
-  }).then(yodifiedMessage => {
-    return yodifiedMessage;
-  });
+function YodaSpeak(key) {
+  this._credentials ={
+    host: "yoda.p.mashape.com",
+    path: "/yoda",
+    headers: { "X-Mashape-Key": key || null },
+    // Mashape's certificate doesn't seem to be authorized.
+    // I'm gonna assume potential man-in-the-middle attacks for yoda-speak words is not too serious.
+    rejectUnauthorized: false 
+  }
 }
 
-// var express = require('express');
-// var app = express();
-
-// var cors=require('cors');
-// app.use(cors({origin:true,credentials: true}));
+export function convert (message) {
+  YodaSpeak.convert = (message) => {
+    const path = "/yoda?" + querystring.stringify({sentence: message});
+    instance.get(path)
+    .then(function (response) {
+      console.log(response);
+      return response;
+    })
+    .catch(function (error) {
+      console.log(error);
+      return error;
+    });
+  }
+  return YodaSpeak.convert(message);
+}

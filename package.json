@@ -36,6 +36,7 @@
     "yoda-speak": "^0.1.1"
   },
   "devDependencies": {
+    "axios": "^0.18.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-stage-0": "^6.5.0",
