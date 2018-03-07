@@ -8,7 +8,6 @@ import {connect} from 'react-redux';
 
 class YodifiedMessage extends Component {
   render() {
-    console.log('this props is', this.props)
     if (!this.props.yodifiedMessage) {
       return (<div></div>);
     } else {
@@ -24,9 +23,8 @@ class YodifiedMessage extends Component {
 // Get apps state and pass it as props to UserList
 //      > whenever state changes, the UserList will automatically re-render
 function mapStateToProps(state) {
-  console.log('state is', state);
   return {
-    yodifiedMessage: (state && state.convertMessage && state.convertMessage.yodifiedMessage)
+    yodifiedMessage: (state && state.message && state.message.yodifiedMessage)
   };
 }
 

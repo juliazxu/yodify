@@ -6,7 +6,7 @@ import { SUBMIT_MESSAGE, CONVERT_MESSAGE } from "../constants/action-types";
 //   yodifiedMessage: ''
 // }
 
-export function convertMessage (state = null, action) {
+export function message (state = null, action) {
   switch (action.type) {
     case SUBMIT_MESSAGE:
       return { ...state, message: action.payload, loading: true };

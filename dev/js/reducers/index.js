@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { convertMessage } from './convertMessage';
+import { message } from './message';
 
 const allReducers = combineReducers({
-  convertMessage
+  message
 });
 
 export default allReducers;

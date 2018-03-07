@@ -25,11 +25,10 @@ export function convert (message) {
     const path = "/yoda?" + querystring.stringify({sentence: message});
     return instance.get(path)
     .then(function (response) {
-      console.log(response);
       return response;
     })
     .catch(function (error) {
-      console.log(error);
+      console.log('error is', error);
       return error;
     });
   }
