@@ -1,4 +1,5 @@
 @import 'colors';
+@import url(http://weloveiconfonts.com/api/?family=entypo);
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -86,17 +87,33 @@ input[type=text]:focus {
   background-color: $medium-gray;
 }
 
-.inline {
-  margin-right: 2em;
-  margin-left: -2em;
+.wrapper {
+  position: relative;
 }
 
-#close * {
+.inline {
+  position: absolute;
+  z-index: 10;
+  margin-left: -1.5em;
+  margin-top: 2em;
+}
+
+#close {
   cursor: pointer;
   color: gray;
-  background-color: none !important;
 }
 
-#close:hover * {
+#close:hover {
   color: lightgray;
+}
+
+// Icons
+
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+  font-style: normal;
+}
+
+i * {
+  background-color: none !important;
 }

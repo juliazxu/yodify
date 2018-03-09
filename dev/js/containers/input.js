@@ -25,22 +25,21 @@ class Input extends React.Component{
       this.props.loading 
         ? <img src={require('./../assets/yoda-walking.gif')} alt="loading..." />
         : (
-          <div>
+          <div className="wrapper">
             <input
               type="text"
               placeholder="What do you want Yoda to say?"
               onChange={(e) => this.handleChange(e)}
               value={this.state.message}
             />
-            <span
-              onClick={() => this.clear()}
-            >
-              <i 
-                className="fas fa-times inline" 
-                id="close"
-                >
-              </i>
-            </span>
+            {this.state.message && 
+                <i 
+                  className="entypo-cancel inline" 
+                  id="close"
+                  onClick={() => this.clear()}
+                  >
+                </i>
+            }
             <a 
               className={this.state.message.trim() ? "button green" : "button green disabled"}
               onClick={() => this.props.convertYodify(this.state.message)}
