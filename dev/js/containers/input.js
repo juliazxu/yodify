@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { convertYodify } from '../actions/index'
+import { convertYodify } from '../actions/index';
 
 class Input extends React.Component {
   constructor() {
@@ -12,35 +12,39 @@ class Input extends React.Component {
   }
 
   handleChange(event) {
+    console.log(this.props.loading);
     this.setState({ message: event.target.value });
   }
 
   render() {
-    return (
-      <div>
-        <input
-          type="text"
-          placeholder="What do you want Yoda to say?"
-          onChange={ (e) => this.handleChange(e) }
-        />
-        {/* disable when no input */}
-        <a 
-          className="button green"
-          onClick={ () => this.props.convertYodify(this.state.message) }
-        >
-          Yodify
-        </a>
-      </div>
-    )
+    return this.props.loading 
+      ? <img src={require('./../assets/yoda-walking.gif')} alt="loading..." />
+      : (
+        <div>
+          <input
+            type="text"
+            placeholder="What do you want Yoda to say?"
+            onChange={ (e) => this.handleChange(e) }
+          />
+          <a 
+            className="button green"
+            onClick={ () => this.props.convertYodify(this.state.message) }
+          >
+            Yodify
+          </a>
+        </div>
+      )
   }
 }
 
-// Get actions and pass them as props to to UserList
-//      > now UserList has this.props.selectUser
+function mapStateToProps(state) {
+  return {
+    loading: state.message.loading
+  };
+}
+
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({convertYodify: convertYodify}, dispatch);
 };
 
-// We don't want to return the plain UserList (component) anymore, we want to return the smart Container
-//      > UserList is now aware of state and actions
-export default connect(null, matchDispatchToProps)(Input);
+export default connect(mapStateToProps, matchDispatchToProps)(Input);

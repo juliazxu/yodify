@@ -1,12 +1,12 @@
 import { SUBMIT_MESSAGE, CONVERT_MESSAGE } from "../constants/action-types";
 
-// const initialState = {
-//   message: '',
-//   loading: false,
-//   yodifiedMessage: ''
-// }
+const initialState = {
+  message: '',
+  loading: false,
+  yodifiedMessage: ''
+}
 
-export function message (state = null, action) {
+export function message (state = initialState, action) {
   switch (action.type) {
     case SUBMIT_MESSAGE:
       return { ...state, message: action.payload, loading: true };

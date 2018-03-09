@@ -22,9 +22,9 @@ module.exports = {
                 loader: 'style-loader!css-loader!sass-loader'
             },
             { 
-                test: /\.(png|jpg|svg)$/, 
-                loader: 'url-loader?limit=8192' 
-            }
+                test: /\.(png|jpg|jpeg|gif|svg)$/, 
+                loader: "url-loader?limit=100000" 
+            },
         ]
     },
     output: {
