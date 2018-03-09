@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { convertYodify } from '../actions/index';
+import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {convertYodify} from '../actions/index';
 
-class Input extends React.Component {
-  constructor() {
+class Input extends React.Component{
+  constructor(){
     super();
     this.state = {
       message: ''
@@ -12,33 +12,49 @@ class Input extends React.Component {
   }
 
   handleChange(event) {
-    console.log(this.props.loading);
     this.setState({ message: event.target.value });
   }
 
-  render() {
-    return this.props.loading 
-      ? <img src={require('./../assets/yoda-walking.gif')} alt="loading..." />
-      : (
-        <div>
-          <input
-            type="text"
-            placeholder="What do you want Yoda to say?"
-            onChange={ (e) => this.handleChange(e) }
-          />
-          <a 
-            className="button green"
-            onClick={ () => this.props.convertYodify(this.state.message) }
-          >
-            Yodify
-          </a>
-        </div>
+  clear() {
+    console.log(this.state.message);
+    this.setState({message: ''});
+  }
+
+  render(){
+    return (
+      this.props.loading 
+        ? <img src={require('./../assets/yoda-walking.gif')} alt="loading..." />
+        : (
+          <div>
+            <input
+              type="text"
+              placeholder="What do you want Yoda to say?"
+              onChange={(e) => this.handleChange(e)}
+              value={this.state.message}
+            />
+            <span
+              onClick={() => this.clear()}
+            >
+              <i 
+                className="fas fa-times inline" 
+                id="close"
+                >
+              </i>
+            </span>
+            <a 
+              className={this.state.message.trim() ? "button green" : "button green disabled"}
+              onClick={() => this.props.convertYodify(this.state.message)}
+            >
+              Yodify
+            </a>
+          </div>
+        )
       )
   }
 }
 
 function mapStateToProps(state) {
-  return {
+  return{
     loading: state.message.loading
   };
 }

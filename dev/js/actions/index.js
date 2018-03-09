@@ -1,7 +1,7 @@
 import {convert} from './../api/yodify';
 
-export function convertYodify(input) {
-  return function (dispatch) {
+export function convertYodify(input){
+  return function (dispatch){
     dispatch(submitMessage(input))
     return new Promise(resolve => {
       let to_resolve = convert(input);
@@ -13,7 +13,7 @@ export function convertYodify(input) {
   }
 }
 
-export function sendConvertedMessage (yodifiedMessage) {
+export function sendConvertedMessage (yodifiedMessage){
   return {
     type: 'CONVERT_MESSAGE',
     payload: yodifiedMessage

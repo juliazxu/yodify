@@ -25,7 +25,6 @@ To view: [http://localhost:3000/](http://localhost:3000/)
 ```
 
 To-dos:
-- Add loading state
 - Add clear button to text field
 - Add microphone
 - Add voice to text so you can talk to Yoda

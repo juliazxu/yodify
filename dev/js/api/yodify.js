@@ -1,4 +1,4 @@
-import { apiKey } from './apiKey';
+import {apiKey} from './apiKey';
 var https = require('https');
 var querystring = require('querystring');
 var axios = require('axios');
@@ -6,14 +6,14 @@ var axios = require('axios');
 var instance = axios.create({
   baseURL: 'https://yoda.p.mashape.com/',
   timeout: 5000,
-  headers: { "X-Mashape-Key": apiKey || null }
+  headers: {"X-Mashape-Key": apiKey || null}
 });
 
 function YodaSpeak(key) {
   this._credentials ={
     host: "yoda.p.mashape.com",
     path: "/yoda",
-    headers: { "X-Mashape-Key": key || null },
+    headers: {"X-Mashape-Key": key || null},
     // Mashape's certificate doesn't seem to be authorized.
     // I'm gonna assume potential man-in-the-middle attacks for yoda-speak words is not too serious.
     rejectUnauthorized: false 

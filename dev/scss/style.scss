@@ -56,6 +56,7 @@ h1 {
 .disabled {
   opacity: 0.4;
   cursor: not-allowed;
+  pointer-events: none;
 }
 
 .green {
@@ -83,4 +84,19 @@ input[type=text] {
 
 input[type=text]:focus {
   background-color: $medium-gray;
+}
+
+.inline {
+  margin-right: 2em;
+  margin-left: -2em;
+}
+
+#close * {
+  cursor: pointer;
+  color: gray;
+  background-color: none !important;
+}
+
+#close:hover * {
+  color: lightgray;
 }
