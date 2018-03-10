@@ -31,3 +31,11 @@ To-dos:
 - Add speaker
 - Add text to voice so Yoda talks to you
 - Add unit tests
+
+- cut a branch for future work and then pr it to master
+- rename api directory
+- put api keys in global config file
+  - .gitignore this file!
+- the stuff in the containers folder should probably go in components
+- in actions, do something with reject to degrade gracefully if shit doesn't work
+- rename all but root index.js to be more meaningful
