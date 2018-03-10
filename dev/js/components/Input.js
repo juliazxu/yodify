@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {convertYodify} from '../actions/index';
+import {convertYodify} from '../actions/actions';
 
 class Input extends React.Component{
   constructor(){
