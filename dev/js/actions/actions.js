@@ -1,14 +1,18 @@
-import {convert} from './../api/yodify';
+import {convert} from './../yodaService/yodify';
 
 export function convertYodify(input){
   return function (dispatch){
     dispatch(submitMessage(input))
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       let to_resolve = convert(input);
       resolve(to_resolve);
+      reject(to_resolve);
     })
     .then(response => {
       dispatch(sendConvertedMessage(response.data))
+    })
+    .catch(error => {
+      dispatch(sendConvertedMessage("Sleeping, Yoda is. In one hour you can try, herh."))
     })
   }
 }

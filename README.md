@@ -25,9 +25,12 @@ To view: [http://localhost:3000/](http://localhost:3000/)
 ```
 
 To-dos:
+- Add submit on Enter keypress (in input field)
+- Input field is immediately selected when you land on page
 - Add proptypes
 - Add microphone
 - Add voice to text so you can talk to Yoda
 - Add speaker
 - Add text to voice so Yoda talks to you
 - Add unit tests
+- Fix X css

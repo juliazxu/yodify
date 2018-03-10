@@ -1,4 +1,4 @@
-import {apiKey} from './apiKey';
+import {apiKey} from './../../../apiKey';
 var https = require('https');
 var querystring = require('querystring');
 var axios = require('axios');
@@ -29,7 +29,6 @@ export function convert (message) {
     })
     .catch(function (error) {
       console.log('error is', error);
-      return error;
     });
   }
   return YodaSpeak.convert(message);
