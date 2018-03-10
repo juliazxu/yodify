@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {convertYodify} from '../actions/actions';
@@ -15,9 +16,19 @@ class Input extends React.Component{
     this.setState({ message: event.target.value });
   }
 
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      this.convert();
+    }
+  }
+
   clear() {
     console.log(this.state.message);
     this.setState({message: ''});
+  }
+
+  convert() {
+    this.props.convertYodify(this.state.message);
   }
 
   render(){
@@ -29,7 +40,9 @@ class Input extends React.Component{
             <input
               type="text"
               placeholder="What do you want Yoda to say?"
+              autoFocus
               onChange={(e) => this.handleChange(e)}
+              onKeyPress={(e) => this.handleKeyPress(e)}
               value={this.state.message}
             />
             {this.state.message && 
@@ -42,7 +55,7 @@ class Input extends React.Component{
             }
             <a 
               className={this.state.message.trim() ? "button green" : "button green disabled"}
-              onClick={() => this.props.convertYodify(this.state.message)}
+              onClick={() => this.convert()}
             >
               Yodify
             </a>
@@ -52,14 +65,18 @@ class Input extends React.Component{
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return{
     loading: state.message.loading
   };
 }
 
-function matchDispatchToProps(dispatch) {
+const matchDispatchToProps = dispatch => {
   return bindActionCreators({convertYodify: convertYodify}, dispatch);
+};
+
+Input.PropTypes = {
+  loading: PropTypes.boolean
 };
 
 export default connect(mapStateToProps, matchDispatchToProps)(Input);
