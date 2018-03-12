@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {convertYodify} from '../actions/actions';
+import {VoiceRecognition} from './VoiceRecognition';
 
 class Input extends React.Component{
   constructor(){
@@ -10,6 +11,8 @@ class Input extends React.Component{
     this.state = {
       message: ''
     };
+
+    this.onRecordDone = this.onRecordDone.bind(this);
   }
 
   handleChange(event) {
@@ -29,6 +32,11 @@ class Input extends React.Component{
 
   convert() {
     this.props.convertYodify(this.state.message);
+  }
+
+  onRecordDone(msg) {
+    console.log('msg is', msg);
+    this.setState({message: msg})
   }
 
   render(){
@@ -53,6 +61,9 @@ class Input extends React.Component{
                   >
                 </i>
             }
+            <VoiceRecognition 
+              onRecordDone={this.onRecordDone} 
+            />
             <a 
               className={this.state.message.trim() ? "button green" : "button green disabled"}
               onClick={() => this.convert()}
