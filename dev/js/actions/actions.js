@@ -17,7 +17,7 @@ export function convertYodify(input){
   }
 }
 
-export function sendConvertedMessage (yodifiedMessage){
+export const sendConvertedMessage = (yodifiedMessage) => {
   return {
     type: 'CONVERT_MESSAGE',
     payload: yodifiedMessage
