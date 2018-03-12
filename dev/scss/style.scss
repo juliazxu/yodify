@@ -91,6 +91,8 @@ input[type=text]:focus {
   position: relative;
 }
 
+// Icons
+
 .inline {
   position: absolute;
   z-index: 10;
@@ -103,17 +105,22 @@ input[type=text]:focus {
   color: gray;
 }
 
-#close:hover {
-  color: lightgray;
+#mic:active {
+  color: $primary;
 }
 
-// Icons
+#play {
+  margin-right: 1em;
+}
+
+// All Icons
 
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
   font-style: normal;
+  cursor: pointer;
 }
 
-i * {
-  background-color: none !important;
+[class*="entypo-"]:hover {
+  color: lightgray;
 }
