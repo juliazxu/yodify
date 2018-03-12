@@ -17,7 +17,7 @@ export class VoiceRecognition extends React.Component {
     if (SpeechRecognition != null) {
       this.recognition = this.createRecognition(SpeechRecognition)
     } else {
-      console.warn('The current browser does not support the SpeechRecognition API.')
+      console.warn('Please use Chrome to do record and play voices.')
     }
   }
 
@@ -28,68 +28,57 @@ export class VoiceRecognition extends React.Component {
       lang: 'en-US'
     }
 
-    const options = Object.assign({}, defaults, this.props)
+    const options = {...defaults, ...this.props};
 
-    let recognition = new SpeechRecognition()
+    let recognition = new SpeechRecognition();
 
-    recognition.continuous = options.continuous
-    recognition.interimResults = options.interimResults
-    recognition.lang = options.lang
+    recognition.continuous = options.continuous;
+    recognition.lang = options.lang;
 
-    return recognition
+    return recognition;
   }
 
   componentDidMount() {
-    let that = this;
-    this.recognition.onresult = function(event) {
-      console.log('event data is', event.results[0][0].transcript);
-      that.props.onRecordDone(event.results[0][0].transcript)
+    // finished recording triggers this.recognition.onresult
+    this.recognition.onresult = (event) => {
+      let transcript = event.results[0][0].transcript;
+      // console.log('event data is', transcript);
+      this.props.onRecordDone(transcript);
     }
   }
 
   start() {
-    console.log('start');
+    // console.log('start');
     this.recognition.start();
   }
 
   stop() {
     this.recognition.stop();
-    // this.sendMessage();
   }
 
   abort() {
-    this.recognition.abort()
+    this.recognition.abort();
   }
 
-  componentWillReceiveProps ({ stop }) {
+  componentWillReceiveProps({ stop }) {
     if (stop) {
-      this.stop()
+      this.stop();
     }
   }
 
-  componentWillUnmount () {
-    this.abort()
+  componentWillUnmount() {
+    this.abort();
   }
-
-  play() {
-    console.log(this.recognition);
-    console.log(this.recognition.transcript, 
-      this.recognition.finalTranscript, this.recognition.interimTranscript);
-  }
-
-  // sendMessage() {
-  //   this.props.onRecordDone(this.state.message);
-  // }
 
   render () {
     return (
       <span>
-        <a onMouseDown={() => this.start()} onMouseUp={() => this.stop()}>
-          <i 
-            className="entypo-mic inline"
-            id="mic"
-          />
-        </a>
+        <i 
+          className="entypo-mic inline"
+          id="mic"
+          onMouseDown={() => this.start()} 
+          onMouseUp={() => this.stop()}
+        />
       </span>
     )
   }

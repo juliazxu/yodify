@@ -7,16 +7,12 @@ export class VoicePlayer extends React.Component {
     if ('speechSynthesis' in window) {
       this.speech = this.createSpeech()
     } else {
-      console.warn('The current browser does not support the speechSynthesis API.')
+      console.warn('Please use Chrome in order to record and play voices.')
     }
 
-    this.state = {
-      started: false,
-      playing: false,
-    }
   }
 
-  createSpeech = () => {
+  createSpeech() {
     const defaults = {
       text: '',
       volume: 1,
@@ -25,9 +21,9 @@ export class VoicePlayer extends React.Component {
       lang: 'en-US'
     }
 
-    const options = Object.assign({}, defaults, this.props)
+    const options = {...defaults, ...this.props}
 
-    let speech = new SpeechSynthesisUtterance()
+    let speech = new SpeechSynthesisUtterance();
 
     speech.text = options.text
     speech.volume = options.volume
@@ -35,72 +31,24 @@ export class VoicePlayer extends React.Component {
     speech.pitch = options.pitch
     speech.lang = options.lang
 
+    // there should be a better way of writing this, but the below doesn't work
+    // speech = { speech, ...options }
+
     return speech
   }
 
-  speak = () => {
+  speak() {
     this.speech.text = this.props.yodifiedMessage;
-    console.log('speaking', this.speech);
+    // console.log('speaking', this.speech);
     window.speechSynthesis.speak(this.speech);
-    this.setState({ started: true, playing: true });
   }
 
-  cancel = () => {
-    window.speechSynthesis.cancel()
-    this.setState({ started: false, playing: false })
-  }
-
-  pause = () => {
-    window.speechSynthesis.pause()
-    this.setState({ playing: false })
-  }
-
-  resume = () => {
-    window.speechSynthesis.resume()
-    this.setState({ playing: true })
-  }
-
-  componentWillReceiveProps ({ pause }) {
-    if (pause && this.state.playing && this.state.started) {
-      return this.pause()
-    }
-
-    if (!pause && !this.state.playing && this.state.started) {
-      return this.resume()
-    }
-  }
-
-  shouldComponentUpdate () {
-    return false
-  }
-
-  componentDidMount() {
-    const events = [
-      { name: 'start', action: this.props.onStart },
-      { name: 'error', action: this.props.onError },
-      { name: 'pause', action: this.props.onPause },
-      { name: 'resume', action: this.props.onResume }
-    ]
-
-    events.forEach(e => {
-      this.speech.addEventListener(e.name, e.action)
-    })
-
-    this.speech.addEventListener('end', () => {
-      this.setState({ started: false, playing: false })
-    })
-
-    if (this.props.play) {
-      this.speak()
-    }
+  shouldComponentUpdate() {
+    return false;
   }
 
   componentWillUnmount () {
-    this.cancel()
-  }
-
-  updateMessage(e) {
-    this.setState({message: e.target.value});
+    window.speechSynthesis.cancel();
   }
 
   render () {
