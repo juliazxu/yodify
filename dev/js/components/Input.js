@@ -75,8 +75,8 @@ const matchDispatchToProps = dispatch => {
   return bindActionCreators({convertYodify: convertYodify}, dispatch);
 };
 
-Input.PropTypes = {
-  loading: PropTypes.boolean
+Input.propTypes = {
+  loading: PropTypes.bool
 };
 
 export default connect(mapStateToProps, matchDispatchToProps)(Input);

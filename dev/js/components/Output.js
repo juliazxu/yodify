@@ -23,9 +23,9 @@ const mapStateToProps = state => {
   };
 }
 
-Output.PropTypes = {
+Output.propTypes = {
   yodifiedMessage: PropTypes.string,
-  loading: PropTypes.boolean
+  loading: PropTypes.bool
 };
 
 export default connect(mapStateToProps)(Output);
