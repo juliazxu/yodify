@@ -1,4 +1,4 @@
-import {convert} from './../yodaService/yodify';
+import {convert} from './../services/yodify';
 
 export function convertYodify(input){
   return function (dispatch){
