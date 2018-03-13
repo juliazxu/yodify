@@ -48,7 +48,7 @@ export class VoiceRecognition extends React.Component {
   }
 
   start() {
-    // console.log('start');
+    console.log('start');
     this.recognition.start();
   }
 

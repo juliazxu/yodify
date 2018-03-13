@@ -62,7 +62,7 @@ class Input extends React.Component{
                 </i>
             }
             <VoiceRecognition 
-              onRecordDone={this.onRecordDone} 
+              onRecordDone={this.onRecordDone}
             />
             <a 
               className={this.state.message.trim() ? "button green" : "button green disabled"}
