@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {VoicePlayer} from './VoicePlayer';
 
-class Output extends Component{
+export class Output extends Component{
   render(){
     return (
       this.props.yodifiedMessage && !this.props.loading

@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {convertYodify} from '../actions/actions';
 import {VoiceRecognition} from './VoiceRecognition';
 
-class Input extends React.Component{
+export class Input extends React.Component{
   constructor(){
     super();
     this.state = {
@@ -61,9 +61,11 @@ class Input extends React.Component{
                   >
                 </i>
             }
-            <VoiceRecognition 
-              onRecordDone={this.onRecordDone} 
-            />
+            {!this.state.message && 
+              <VoiceRecognition 
+                onRecordDone={this.onRecordDone} 
+              />
+            }
             <a 
               className={this.state.message.trim() ? "button green" : "button green disabled"}
               onClick={() => this.convert()}
@@ -76,13 +78,13 @@ class Input extends React.Component{
   }
 }
 
-const mapStateToProps = state => {
-  return{
+function mapStateToProps (state) {
+  return {
     loading: state.message.loading
   };
 }
 
-const matchDispatchToProps = dispatch => {
+function matchDispatchToProps (dispatch) {
   return bindActionCreators({convertYodify: convertYodify}, dispatch);
 };
 
