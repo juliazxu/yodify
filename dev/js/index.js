@@ -11,11 +11,11 @@ import App from './components/App';
 
 const logger = createLogger();
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer,
-  composeEnhancers(
-    applyMiddleware(thunk, promise, logger),
-  )
+  // composeEnhancers(
+    applyMiddleware(thunk, promise, logger)
+  // )
 );
 
 ReactDOM.render(

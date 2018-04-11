@@ -17,7 +17,7 @@ export class VoiceRecognition extends React.Component {
     if (SpeechRecognition != null) {
       this.recognition = this.createRecognition(SpeechRecognition)
     } else {
-      console.warn('Please use Chrome to do record and play voices.')
+      window.alert('Please use Chrome to record and play voices.')
     }
   }
 
@@ -71,8 +71,8 @@ export class VoiceRecognition extends React.Component {
   }
 
   render () {
-    return (
-      <span>
+    return 'speechSynthesis' in window 
+      ? <span>
         <i 
           className="entypo-mic inline"
           id="mic"
@@ -80,6 +80,6 @@ export class VoiceRecognition extends React.Component {
           onMouseUp={() => this.stop()}
         />
       </span>
-    )
+      : null
   }
 }

@@ -1,6 +1,6 @@
 import { SUBMIT_MESSAGE, CONVERT_MESSAGE } from "../constants/action-types";
 
-const initialState = {
+export const initialState = {
   message: '',
   loading: false,
   yodifiedMessage: ''

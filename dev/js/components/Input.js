@@ -42,7 +42,7 @@ export class Input extends React.Component{
   render(){
     return (
       this.props.loading 
-        ? <img src={require('./../assets/yoda-walking.gif')} alt="loading..." />
+        ? <img src={'/assets/yoda-walking.gif'} alt="loading..." />
         : (
           <div className="wrapper">
             <input
@@ -74,17 +74,17 @@ export class Input extends React.Component{
             </a>
           </div>
         )
-      )
+    )
   }
-}
+};
 
-function mapStateToProps (state) {
-  return {
-    loading: state.message.loading
-  };
-}
+const mapStateToProps = state => {
+  return{ 
+    loading: state.message.loading 
+  }
+};
 
-function matchDispatchToProps (dispatch) {
+const matchDispatchToProps = dispatch => {
   return bindActionCreators({convertYodify: convertYodify}, dispatch);
 };
 

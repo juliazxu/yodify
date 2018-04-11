@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {VoicePlayer} from './VoicePlayer';
 
-export class Output extends Component{
+export class Output extends React.Component{
   render(){
     return (
       this.props.yodifiedMessage && !this.props.loading
@@ -26,7 +26,7 @@ const mapStateToProps = state => {
   return{
     yodifiedMessage: state.message.yodifiedMessage,
     loading: state.message.loading
-  };
+  }
 }
 
 Output.propTypes = {

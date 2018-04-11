@@ -1,11 +1,5 @@
-import {message} from './../reducers/message';
+import {message, initialState} from './../reducers/message';
 import {CONVERT_MESSAGE, SUBMIT_MESSAGE} from './../constants/action-types';
-
-const initialState = {
-  message: '',
-  loading: false,
-  yodifiedMessage: ''
-}
 
 describe('message reducer', () => {
   it('should return the initial state', () => {
