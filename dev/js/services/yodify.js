@@ -1,7 +1,8 @@
-import {apiKey} from './../../../apiKey';
 var https = require('https');
 var querystring = require('querystring');
 var axios = require('axios');
+
+import {apiKey} from process.env.apiKey || './../../../apiKey';
 
 var instance = axios.create({
   baseURL: 'https://yoda.p.mashape.com/',
