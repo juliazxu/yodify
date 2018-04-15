@@ -51,6 +51,7 @@
     "express": "^4.16.2",
     "file-loader": "^1.1.11",
     "https": "^1.0.0",
+    "jest": "^22.4.3",
     "jest-enzyme": "^5.0.3",
     "react-transform-hmr": "^1.0.4",
     "redux-testkit": "^1.0.6",
