@@ -1,12 +1,12 @@
-import {apiKey} from './../../../apiKey';
 var https = require('https');
 var querystring = require('querystring');
 var axios = require('axios');
+require('dotenv').load();
 
 var instance = axios.create({
   baseURL: 'https://yoda.p.mashape.com/',
   timeout: 5000,
-  headers: {"X-Mashape-Key": apiKey || null}
+  headers: {"X-Mashape-Key": process.env.apiKey || null}
 });
 
 function YodaSpeak(key) {

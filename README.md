@@ -22,12 +22,13 @@ Start the development server
 
 To view: [http://localhost:3000/](http://localhost:3000/)
 
+To run tests
+```
+npm run test
+
 ```
 
 To-dos:
-- Add microphone
-- Add voice to text so you can talk to Yoda
-- Add speaker
-- Add text to voice so Yoda talks to you
 - Add unit tests
-- Fix X css
+- Fix microphone, X css
+- Get it working on Safari / Firefox
