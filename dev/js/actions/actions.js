@@ -1,4 +1,5 @@
 import {convert} from './../services/yodify';
+import {SUBMIT_MESSAGE, CONVERT_MESSAGE} from "../constants/action-types";
 
 export function convertYodify(input){
   return function (dispatch){
@@ -19,14 +20,14 @@ export function convertYodify(input){
 
 export const sendConvertedMessage = (yodifiedMessage) => {
   return {
-    type: 'CONVERT_MESSAGE',
+    type: CONVERT_MESSAGE,
     payload: yodifiedMessage
   }
 }
 
 export const submitMessage = (input) => {
   return {
-    type: 'SUBMIT_MESSAGE',
+    type: SUBMIT_MESSAGE,
     payload: input
   }
 };

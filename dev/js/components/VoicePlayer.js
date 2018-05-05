@@ -5,9 +5,9 @@ export class VoicePlayer extends React.Component {
     super(props)
 
     if ('speechSynthesis' in window) {
-      this.speech = this.createSpeech()
+      this.speech = this.createSpeech();
     } else {
-      console.warn('Please use Chrome in order to record and play voices.')
+      window.alert('Please use Chrome to record and play voices.');
     }
 
   }
@@ -18,23 +18,23 @@ export class VoicePlayer extends React.Component {
       volume: 1,
       rate: 1,
       pitch: 1,
-      lang: 'en-US'
+      lang: 'en-US',
     }
 
-    const options = {...defaults, ...this.props}
+    const options = {...defaults, ...this.props};
 
     let speech = new SpeechSynthesisUtterance();
 
-    speech.text = options.text
-    speech.volume = options.volume
-    speech.rate = options.rate
-    speech.pitch = options.pitch
-    speech.lang = options.lang
+    speech.text = options.text;
+    speech.volume = options.volume;
+    speech.rate = options.rate;
+    speech.pitch = options.pitch;
+    speech.lang = options.lang;
 
     // there should be a better way of writing this, but the below doesn't work
     // speech = { speech, ...options }
 
-    return speech
+    return speech;
   }
 
   speak() {
@@ -52,14 +52,14 @@ export class VoicePlayer extends React.Component {
   }
 
   render () {
-    return (
-      <span>
-        <i 
-          className="entypo-play"
-          id="play"
-          onClick={() => this.speak()} 
-        />
+    return 'speechSynthesis' in window 
+      ? <span>
+          <i 
+            className="entypo-play"
+            id="play"
+            onClick={() => this.speak()} 
+          />
       </span>
-    )
+      : null
   }
 }

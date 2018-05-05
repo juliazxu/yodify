@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {convertYodify} from '../actions/actions';
 import {VoiceRecognition} from './VoiceRecognition';
 
-class Input extends React.Component{
+export class Input extends React.Component{
   constructor(){
     super();
     this.state = {
@@ -42,7 +42,7 @@ class Input extends React.Component{
   render(){
     return (
       this.props.loading 
-        ? <img src={require('./../assets/yoda-walking.gif')} alt="loading..." />
+        ? <img src={'/assets/yoda-walking.gif'} alt="loading..." />
         : (
           <div className="wrapper">
             <input
@@ -72,15 +72,15 @@ class Input extends React.Component{
             </a>
           </div>
         )
-      )
+    )
   }
-}
+};
 
 const mapStateToProps = state => {
-  return{
-    loading: state.message.loading
-  };
-}
+  return{ 
+    loading: state.message.loading 
+  }
+};
 
 const matchDispatchToProps = dispatch => {
   return bindActionCreators({convertYodify: convertYodify}, dispatch);
