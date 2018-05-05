@@ -33,5 +33,8 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin()
-  ]
+  ],
+  node: {
+    fs: "empty"
+ },
 };
