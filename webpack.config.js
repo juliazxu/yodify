@@ -5,7 +5,7 @@ module.exports = {
   devServer: {
     inline: true,
     contentBase: './src',
-    port: 3000 || process.env.PORT,
+    port: 3000,
     // https: true
   },
   devtool: 'cheap-module-eval-source-map',
@@ -20,11 +20,11 @@ module.exports = {
       {
         test: /\.scss/,
         loader: 'style-loader!css-loader!sass-loader'
-      }//,
-      /*{ 
+      },
+      { 
         test: /\.(png|jpg|jpeg|gif|svg)$/, 
         loader: ["null-loader"] 
-      },*/
+      },
     ]
   },
   output: {
