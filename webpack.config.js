@@ -3,38 +3,46 @@ var webpack = require('webpack');
 
 module.exports = {
   devServer: {
-    inline: true,
-    contentBase: './src',
+    contentBase: './dist',
     port: 3000,
+    hot: true
     // https: true
   },
   devtool: 'cheap-module-eval-source-map',
-  entry: './dev/js/index.js',
+  entry: [
+    './dev/js/index.js',
+    'react-hot-loader/patch',
+  ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loaders: ['babel'],
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       },
       {
         test: /\.scss/,
-        loader: 'style-loader!css-loader!sass-loader'
-      },
-      { 
-        test: /\.(png|jpg|jpeg|gif|svg)$/, 
-        loader: ["null-loader"] 
-      },
+        use: ['style-loader!css-loader!sass-loader']
+      }
     ]
   },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
   output: {
-    path: 'src',
-    filename: 'js/bundle.min.js'
+    filename: 'js/bundle.min.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin()
+    new webpack.HotModuleReplacementPlugin()
   ],
-  node: {
-    fs: "empty"
- },
+//   node: {
+//     fs: "empty"
+//  },
 };

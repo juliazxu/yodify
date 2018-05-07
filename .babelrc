@@ -1,16 +1,10 @@
 {
   "presets": [
-    "es2015",
-    "react",
-    "stage-2"
+    "@babel/preset-react",
+    "@babel/preset-env"
   ],
-  "env": {
-    "development": {
-      "presets": []
-    }
-  },
   "plugins": [
-    "transform-object-rest-spread", 
-    "transform-react-jsx"
+    ["@babel/plugin-proposal-object-rest-spread"],
+    ["@babel/plugin-proposal-class-properties", { "spec": true }]
   ]
 }
