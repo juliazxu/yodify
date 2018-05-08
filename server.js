@@ -1,15 +1,9 @@
 const express = require('express');
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
-const config = require('./webpack.config.js');
+const path = require('path');
 const app = express();
- 
-const compiler = webpack(config);
- 
-app.use(webpackDevMiddleware(compiler, {
-  serverSideRender: true
-}));
-app.use(webpackHotServerMiddleware(compiler));
- 
-app.listen(process.env.PORT || 6060);
+
+app.use(express.static(__dirname + '/dist/'));
+app.use('/src/assets', express.static(__dirname + '/src/assets/'));
+
+
+app.listen(process.env.PORT || 3843);

@@ -3,36 +3,54 @@ var webpack = require('webpack');
 
 module.exports = {
   devServer: {
-    inline: true,
-    contentBase: './src',
+    contentBase: path.join(__dirname, "src"),
     port: 3000,
+    hot: true
     // https: true
   },
   devtool: 'cheap-module-eval-source-map',
-  entry: './dev/js/index.js',
+  entry: [
+    'babel-polyfill',
+    './dev/js/index.js',
+    'react-hot-loader/patch',
+  ],
   module: {
-    loaders: [
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader", options: {
+            sourceMap: true
+          }
+        }, {
+          loader: "sass-loader", options: {
+            sourceMap: true
+          }
+        }
+      ]},
       {
         test: /\.js$/,
-        loaders: ['babel'],
-        exclude: /node_modules/
-      },
-      {
-        test: /\.scss/,
-        loader: 'style-loader!css-loader!sass-loader'
-      },
-      { 
-        test: /\.(png|jpg|jpeg|gif|svg)$/, 
-        loader: ["null-loader"] 
-      },
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react'],
+          plugins: ['transform-object-rest-spread']
+        }
+      }
     ]
   },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
   output: {
-    path: 'src',
-    filename: 'js/bundle.min.js'
+    filename: 'js/bundle.min.js',
+    path: path.resolve(__dirname, 'src'),
+    publicPath: '/',
   },
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ],
   node: {
     fs: "empty"
