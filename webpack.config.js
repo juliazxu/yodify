@@ -3,31 +3,41 @@ var webpack = require('webpack');
 
 module.exports = {
   devServer: {
-    contentBase: './dist',
+    contentBase: path.join(__dirname, "src"),
     port: 3000,
     hot: true
     // https: true
   },
   devtool: 'cheap-module-eval-source-map',
   entry: [
+    'babel-polyfill',
     './dev/js/index.js',
     'react-hot-loader/patch',
   ],
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader", options: {
+            sourceMap: true
+          }
+        }, {
+          loader: "sass-loader", options: {
+            sourceMap: true
           }
         }
-      },
+      ]},
       {
-        test: /\.scss/,
-        use: ['style-loader!css-loader!sass-loader']
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react'],
+          plugins: ['transform-object-rest-spread']
+        }
       }
     ]
   },
@@ -36,13 +46,13 @@ module.exports = {
   },
   output: {
     filename: 'js/bundle.min.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    path: path.resolve(__dirname, 'src'),
+    publicPath: '/',
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ],
-//   node: {
-//     fs: "empty"
-//  },
+  node: {
+    fs: "empty"
+ },
 };
