@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack",
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "dev": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "start": "node server.js",
     "test": "jest"
   },
   "license": "ISC",
