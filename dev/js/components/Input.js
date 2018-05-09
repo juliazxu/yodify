@@ -26,7 +26,7 @@ export class Input extends React.Component{
   }
 
   clear() {
-    console.log(this.state.message);
+    // console.log(this.state.message);
     this.setState({message: ''});
   }
 
@@ -35,7 +35,7 @@ export class Input extends React.Component{
   }
 
   onRecordDone(msg) {
-    console.log('msg is', msg);
+    // console.log('msg is', msg);
     this.setState({message: msg})
   }
 

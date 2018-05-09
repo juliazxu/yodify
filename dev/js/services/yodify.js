@@ -28,7 +28,7 @@ export function convert (message) {
       return response;
     })
     .catch(function (error) {
-      console.log('error is', error);
+      // console.log('error is', error);
     });
   }
   return YodaSpeak.convert(message);
