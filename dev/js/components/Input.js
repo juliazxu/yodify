@@ -55,7 +55,7 @@ export class Input extends React.Component{
             />
             {this.state.message && 
                 <i 
-                  className="entypo-cancel inline" 
+                  className="entypo entypo-cancel inline" 
                   id="close"
                   onClick={() => this.clear()}
                   >
