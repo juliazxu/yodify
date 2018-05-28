@@ -21,6 +21,9 @@ module.exports = {
         use: [{
           loader: "style-loader"
         }, {
+          loader: "resolve-url-loader"
+        },
+        {
           loader: "css-loader", options: {
             sourceMap: true
           }
