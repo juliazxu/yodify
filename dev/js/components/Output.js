@@ -9,13 +9,13 @@ export class Output extends React.Component{
   render(){
     return (
       this.props.yodifiedMessage && !this.props.loading
-      ? <div>
-        <h2>
-          <VoicePlayer 
-            yodifiedMessage={this.props.yodifiedMessage} 
-          />
+      ? <div className="centered">
+        <VoicePlayer 
+          yodifiedMessage={this.props.yodifiedMessage} 
+        />
+        <span className="h2">
           {this.props.yodifiedMessage}
-        </h2>
+        </span>
       </div>
       : null
     );

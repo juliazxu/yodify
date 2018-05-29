@@ -1,15 +1,16 @@
 @import 'colors';
-@import url(https://weloveiconfonts.com/api/?family=entypo);
+
+html {
+  background-color: #3C3C3B;
+  color: white;
+}
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: white;
 	margin-top: 20vh;
-	background-color: #3C3C3B;
-  color: white;
 }
 
 #yoda {
@@ -24,8 +25,19 @@ h1 {
   font-size: 3em;
 }
 
+.h2 {
+  font-size: 1.5em;
+}
+
 #yoda-walking {
   height: 20vh;
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1em;
 }
 
 .button {
@@ -93,34 +105,18 @@ input[type=text]:focus {
 
 // Icons
 
+.icon:hover {
+  filter: brightness(1.3);
+  cursor: pointer;
+}
+
 .inline {
   position: absolute;
   z-index: 10;
-  margin-left: -1.5em;
-  margin-top: 2em;
-}
-
-#close {
-  cursor: pointer;
-  color: gray;
-}
-
-#mic:active {
-  color: $primary;
+  margin-left: -2em;
+  margin-top: 1.7em;
 }
 
 #play {
   margin-right: 1em;
-}
-
-// All Icons
-
-[class*="entypo-"]:before {
-  font-family: 'entypo', sans-serif;
-  font-style: normal;
-  cursor: pointer;
-}
-
-[class*="entypo-"]:hover {
-  color: lightgray;
 }
