@@ -3,3 +3,4 @@ node_modules
 
 apiKey.js
 .env
+*.hot-update.js

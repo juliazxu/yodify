@@ -54,11 +54,11 @@ export class VoicePlayer extends React.Component {
   render () {
     return 'speechSynthesis' in window 
       ? <span>
-          <i 
-            className="entypo-play"
-            id="play"
-            onClick={() => this.speak()} 
-          />
+        <img src={"./assets/play.svg"} 
+          id="play"
+          className="icon"
+          onClick={() => this.speak()} 
+        />
       </span>
       : null
   }

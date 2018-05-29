@@ -64,38 +64,7 @@ describe('Output Component with props', () => {
 
   it('should render a VoicePlayer and h2', () => {
     expect(container.find(VoicePlayer).length).toEqual(1);
-    expect(container.find('h2').length).toEqual(1);
-    expect(container.find('h2').children().length).toEqual(2);
-    expect(container.find('h2').text()).toEqual('<VoicePlayer />Test message, this is.');
+    expect(container.find('div').length).toEqual(1);
+    expect(container.find('div').children().length).toEqual(2);
   });
 });
-
-// Connected Input Component
-// describe('Input Component Snapshot', () => {
-//   const initialState = {loading: false};
-//   const store = mockStore(initialState);
-//   let container = shallow(<Provider store={store}><Input /></Provider>);
-
-//   it('should render without throwing an error', () => {
-//     expect(container.length).toEqual(1)
-//   });
-
-  // it('props should match state', () => {
-  //   expect(container.find('div').prop('loading')).toEqual(initialState.loading);
-  // });
-// });
-
-// VoicePlayer Component
-// describe('VoicePlayer should render', () => {
-//   let container = shallow(<VoicePlayer yodifiedMessage="play test message" />);
-
-//   it('should render without throwing an error', () => {
-//     expect(container.length).toEqual(1);
-//     expect(container.instance().props.yodifiedMessage).toBe('play test message');
-//   });
-
-//   it('should render span with icon'), () => {
-//     expect(container.find('span').length).toEqual(1);
-//     expect(container.find('i').length).toEqual(1);
-//   }
-// });

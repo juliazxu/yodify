@@ -73,9 +73,9 @@ export class VoiceRecognition extends React.Component {
   render () {
     return 'speechSynthesis' in window 
       ? <span>
-        <i 
-          className="entypo-mic inline"
+        <img src={"./assets/mic.svg"} 
           id="mic"
+          className="inline icon"
           onMouseDown={() => this.start()} 
           onMouseUp={() => this.stop()}
         />

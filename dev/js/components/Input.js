@@ -53,17 +53,15 @@ export class Input extends React.Component{
               onKeyPress={(e) => this.handleKeyPress(e)}
               value={this.state.message}
             />
-            {this.state.message && 
-                <i 
-                  className="entypo-cancel inline" 
-                  id="close"
-                  onClick={() => this.clear()}
-                  >
-                </i>
+            {this.state.message &&
+              <img src={"./assets/cancel.svg"}
+                className="inline icon"
+                onClick={() => this.clear()} 
+              />
             }
-            <VoiceRecognition 
+            {!this.state.message && <VoiceRecognition 
               onRecordDone={this.onRecordDone}
-            />
+            />}
             <a 
               className={this.state.message.trim() ? "button green" : "button green disabled"}
               onClick={() => this.convert()}
